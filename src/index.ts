@@ -1,10 +1,5 @@
-import { FieldType } from './enums/FieldType';
-import { FieldLabel } from './FieldLabel';
+import { Form } from './Form';
 import './main.scss';
 
-const hello = "yep, it's working";
-document.body.innerHTML = hello;
-
-var fieldLabel = new FieldLabel(FieldType.TextField, "test", "test", "test");
-
-fieldLabel.render();
+var form = new Form();
+form.render();

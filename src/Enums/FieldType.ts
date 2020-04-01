@@ -1,8 +1,8 @@
 export enum FieldType {
-    TextField,
-    MultilineField,
+    InputField,
+    TextAreaField,
     DateField,
     EmailField,
-    CheckField,
+    SelectField,
     CheckBoxField
 }
