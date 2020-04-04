@@ -25,6 +25,7 @@ export class SelectField implements Field {
         var field = document.createElement("select");
         field.name = this.name;
         field.value = this.value;
+        field.className = "selectField";
         field.onchange = () => {
             let currentValue = (document.getElementsByName(this.name)[0]) as HTMLSelectElement;
             this.value = currentValue.value;
@@ -39,5 +40,10 @@ export class SelectField implements Field {
         }
         
         document.getElementById('Form').appendChild(field)
+
+        var br = document.createElement('br');
+        document.getElementById('Form').appendChild(br)
+        br = document.createElement('br');
+        document.getElementById('Form').appendChild(br)
     }
 }

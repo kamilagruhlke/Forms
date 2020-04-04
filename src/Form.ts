@@ -8,12 +8,12 @@ import { TextAreaField } from './Fields/TextAreaField';
 export class Form {
 
     private fields: Field[] = [
-        new InputField('imie', 'Imie', ''), 
-        new InputField('nazwisko', 'Nazwisko', ''),
-        new EmailField('email', 'Email', ''),
-        new SelectField('kierunek-studiow', 'Kierunek studiów', '', ['wsei', 'agh', 'pwsz']),
-        new CheckboxField('e-learning', 'E-learning', ''),
-        new TextAreaField('uwagi', 'Uwagi', '')
+        new InputField('imie', 'Imie: ', ''), 
+        new InputField('nazwisko', 'Nazwisko: ', ''),
+        new EmailField('email', 'Email: ', ''),
+        new SelectField('kierunek-studiow', 'Kierunek studiów: ', '', ['wsei', 'agh', 'pwsz']),
+        new CheckboxField('e-learning', 'E-learning: ', ''),
+        new TextAreaField('uwagi', 'Uwagi: ', '')
     ];
 
     getValue(): string[] {

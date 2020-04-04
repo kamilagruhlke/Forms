@@ -24,11 +24,17 @@ export class InputField implements Field {
         field.name = this.name;
         field.type = 'text';
         field.value = this.value;
+        field.className = "fieldInput";
         field.onchange = () => {
             let currentValue = (document.getElementsByName(this.name)[0]) as HTMLInputElement;
             this.value = currentValue.value;
         }
         
         document.getElementById('Form').appendChild(field)
+    
+        var br = document.createElement('br');
+        document.getElementById('Form').appendChild(br)
+        br = document.createElement('br');
+        document.getElementById('Form').appendChild(br)
     }
 }

@@ -30,5 +30,10 @@ export class DateField implements Field {
         }
         
         document.getElementById('Form').appendChild(field)
+
+        var br = document.createElement('br');
+        document.getElementById('Form').appendChild(br)
+        br = document.createElement('br');
+        document.getElementById('Form').appendChild(br)
     }
 }

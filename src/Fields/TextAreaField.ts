@@ -23,11 +23,17 @@ export class TextAreaField implements Field {
         var field = document.createElement("textarea");
         field.name = this.name;
         field.value = this.value;
+        field.className = "textAreaField";
         field.onchange = () => {
             let currentValue = (document.getElementsByName(this.name)[0]) as HTMLTextAreaElement;
             this.value = currentValue.value;
         }
         
         document.getElementById('Form').appendChild(field)
+
+        var br = document.createElement('br');
+        document.getElementById('Form').appendChild(br)
+        br = document.createElement('br');
+        document.getElementById('Form').appendChild(br)
     }
 }

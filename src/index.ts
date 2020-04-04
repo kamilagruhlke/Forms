@@ -6,8 +6,9 @@ form.render();
 
 var button = document.createElement('button');
 button.innerHTML = "Pobierz wartości";
+button.className = "button";
 button.onclick = () => {
     alert(form.getValue());
 }
 
-document.body.appendChild(button);
+document.getElementById('Form').appendChild(button);
