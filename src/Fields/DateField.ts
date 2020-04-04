@@ -1,5 +1,6 @@
 import { Field } from './../Interfaces/Field';
 import { FieldType } from '../enums/FieldType';
+import { FieldLabel } from '../FieldLabel';
 
 export class DateField implements Field {
 
@@ -16,6 +17,18 @@ export class DateField implements Field {
     }
 
     public render(): void {
-        console.log(this);
+        var label = new FieldLabel(this.name, this.label);
+        label.render();
+        
+        var field = document.createElement("input");
+        field.name = this.name;
+        field.type = 'date';
+        field.value = this.value;
+        field.onchange = () => {
+            let currentValue = (document.getElementsByName(this.name)[0]) as HTMLInputElement;
+            this.value = currentValue.value;
+        }
+        
+        document.getElementById('Form').appendChild(field)
     }
 }
