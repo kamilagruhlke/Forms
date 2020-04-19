@@ -1,8 +1,8 @@
 export interface Storage {
 
-    saveDocument(): void;
+    saveDocument(dataObject: any): string;
 
-    loadDocument(): void;
+    loadDocument(idDocument: string): any;
 
-    getDocuments(): void;
+    getDocuments(): string[];
 }
