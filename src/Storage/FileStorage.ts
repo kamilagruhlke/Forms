@@ -1,25 +1,21 @@
 import { Storage } from "../Interfaces/Storage";
-import * as fs from 'fs';
 
 export class FileStorage implements Storage {
     saveDocument(dataObject: any): string {
-        let id = `/data/document_${new Date().getTime()}.txt`;
-        fs.writeFileSync(id, dataObject);
+        let id = `document_${new Date().getTime()}.txt`;
+        localStorage.setItem(id, JSON.stringify(dataObject))
         return id;
     }    
     
     loadDocument(idDocument: string) {
-        return fs.readFileSync(idDocument);
+        return JSON.parse(localStorage.getItem(idDocument));
     }
 
     getDocuments(): string[] {
         let files: string[] = [];
-        fs.readdir('/data/', (err, files) => {
-            files.forEach(file => {
-              files.push(file)
-            });
-        }); 
-        
+        for (var key in localStorage) {
+            files.push(key);
+        }    
         return files;
     }
 }
