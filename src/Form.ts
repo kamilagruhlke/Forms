@@ -27,8 +27,27 @@ export class Form {
     }
 
     render(): void {
+
         for (let field in this.fields) {
             this.fields[field].render();
         }
+
+        var button = document.createElement('button');
+        button.innerHTML = "Zapisz";
+        button.className = "button";
+        button.onclick = () => {
+            alert("zapis");
+        }
+
+        document.getElementById('Form').appendChild(button);
+
+        button = document.createElement('button');
+        button.innerHTML = "Wstecz";
+        button.className = "button";
+        button.onclick = () => {
+            history.back();
+        }
+
+        document.getElementById('Form').appendChild(button);
     }
 }
