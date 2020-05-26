@@ -1,6 +1,6 @@
 import { Field } from './../Interfaces/Field';
 import { FieldType } from '../enums/FieldType';
-import { FieldLabel } from '../FieldLabel';
+import { FieldLabel } from '../Components/FieldLabel';
 
 export class DateField implements Field {
 
