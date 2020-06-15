@@ -1,5 +1,5 @@
 import { Form } from '../Components/Form';
 import './main.scss';
 
-var form = new Form();
+var form = new Form([]);
 form.render();

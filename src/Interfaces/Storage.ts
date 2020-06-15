@@ -1,8 +1,12 @@
-export interface Storage {
+export interface Storage<T> {
 
-    saveDocument(dataObject: any): string;
+    save(dataObject: T[]): string;
 
-    loadDocument(idDocument: string): any;
+    override(id: string, dataObject: T[]): string;
 
-    getDocuments(): string[];
+    load(id: string): T[];
+
+    get(): string[];
+
+    remove(id: string): void;
 }

@@ -16,9 +16,9 @@ export class TextAreaField implements Field {
         this.value = value;
     }
 
-    public render(): void {
+    public render(elementId: string): void {
         var label = new FieldLabel(this.name, this.label);
-        label.render();
+        label.render(elementId);
         
         var field = document.createElement("textarea");
         field.name = this.name;
@@ -29,11 +29,11 @@ export class TextAreaField implements Field {
             this.value = currentValue.value;
         }
         
-        document.getElementById('Form').appendChild(field)
+        document.getElementById(elementId).appendChild(field)
 
         var br = document.createElement('br');
-        document.getElementById('Form').appendChild(br)
+        document.getElementById(elementId).appendChild(br)
         br = document.createElement('br');
-        document.getElementById('Form').appendChild(br)
+        document.getElementById(elementId).appendChild(br)
     }
 }

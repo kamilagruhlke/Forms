@@ -8,7 +8,7 @@ export class SelectField implements Field {
     public name: string;
     public label: string;
     public value: string;
-    private options: string[];
+    public options: string[];
     
     constructor(name: string, label: string, value: string, options: string[]) {
         this.fieldType = FieldType.SelectField;
@@ -18,9 +18,9 @@ export class SelectField implements Field {
         this.options = options;
     }
 
-    public render(): void {
+    public render(elementId: string): void {
         var label = new FieldLabel(this.name, this.label);
-        label.render();
+        label.render(elementId);
 
         var field = document.createElement("select");
         field.name = this.name;
@@ -39,11 +39,11 @@ export class SelectField implements Field {
             field.appendChild(option);
         }
         
-        document.getElementById('Form').appendChild(field)
+        document.getElementById(elementId).appendChild(field)
 
         var br = document.createElement('br');
-        document.getElementById('Form').appendChild(br)
+        document.getElementById(elementId).appendChild(br)
         br = document.createElement('br');
-        document.getElementById('Form').appendChild(br)
+        document.getElementById(elementId).appendChild(br)
     }
 }

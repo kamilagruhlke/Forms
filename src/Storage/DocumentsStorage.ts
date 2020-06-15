@@ -1,19 +1,25 @@
 import { Storage } from "../Interfaces/Storage";
 
-export class LocalStorage implements Storage {
-    public saveDocument(dataObject: any): string {
+export class DocumentsStorage implements Storage<{key: string, value: string}> {
+
+    public save(dataObject: {key: string, value: string}[]): string {
         let id = `document_${new Date().getTime()}`;
 
         localStorage.setItem(id, JSON.stringify(dataObject))
 
         return id;
-    }    
+    }   
     
-    public loadDocument(idDocument: string) {
+    public override(id: string, dataObject: {key: string, value: string}[]): string {
+        localStorage.setItem(id, JSON.stringify(dataObject))
+        return id;
+    }   
+    
+    public load(idDocument: string) {
         return JSON.parse(localStorage.getItem(idDocument));
     }
 
-    public getDocuments(): string[] {
+    public get(): string[] {
         let files: string[] = [];
         for (let i = 0; i < localStorage.length; i++) {
             if (localStorage.key(i).indexOf('document_') <= -1) {
@@ -24,5 +30,9 @@ export class LocalStorage implements Storage {
         }
         
         return files;
+    }
+
+    public remove(idDocument: string): void {
+        localStorage.removeItem(idDocument);
     }
 }

@@ -8,11 +8,11 @@ export class FieldLabel {
         this.label = label;
     }
 
-    public render(): void {
+    public render(elementId: string): void {
         var label = document.createElement('label');
         label.htmlFor = this.name;
         label.innerHTML = this.label;
 
-        document.getElementById('Form').appendChild(label);
+        document.getElementById(elementId).appendChild(label);
     }
 }
