@@ -1,9 +1,8 @@
-import { DocumentValue } from './../Interfaces/DocumentValue';
-import { DocumentsStorage } from "../Storage/DocumentsStorage";
+import { FormsStorage } from './../Storage/FormsStorage';
 
-export class DocumentList {
+export class FormList {
     public render(): void {
-        var documentList = new DocumentsStorage().get();
+        var formList = new FormsStorage().get();
 
         var table = document.createElement('table');
 
@@ -20,27 +19,34 @@ export class DocumentList {
 
         table.appendChild(tr);
 
-        for(var index in documentList) {
+        for(var index in formList) {
             tr = document.createElement('tr');
             var td = document.createElement('td');
-            td.innerHTML = documentList[index];
+            td.innerHTML = formList[index];
 
             tr.appendChild(td);
 
+            td = document.createElement('td');
+
             var link = document.createElement('a');
-            link.href = `/edit-document.html?id=${documentList[index]}`;
+            link.href = `/form-creator.html?id=${formList[index]}`;
             link.innerHTML = 'Edytuj';
+
+            td.appendChild(link);
+
+            var link = document.createElement('a');
+            link.href = `/edit-document.html?formId=${formList[index]}`;
+            link.innerHTML = 'Wypełnij';
+
+            td.appendChild(link);
 
             var button = document.createElement('button');
             button.innerHTML = "Usuń";
             button.onclick = () =>  {
-                this.removeDocument(documentList[index]); 
+                this.removeForm(formList[index]); 
             }
 
-            td = document.createElement('td');
-            td.appendChild(link);
             td.appendChild(button);
-
             tr.appendChild(td);
 
             table.appendChild(tr);
@@ -49,8 +55,8 @@ export class DocumentList {
         document.getElementById('Form').appendChild(table);
     }
 
-    public removeDocument(id: string): void {
-        new DocumentsStorage().remove(id);
+    public removeForm(id: string): void {
+        new FormsStorage().remove(id);
         location.reload();
     }
 }

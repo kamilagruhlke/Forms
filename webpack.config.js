@@ -3,6 +3,7 @@ const path = require("path");
 module.exports = {
   mode: "development",
   entry: {
+    formList:"./src/Pages/FormList.ts",
     formCreator:"./src/Pages/FormCreator.ts",
     editDocument: "./src/Pages/EditDocument.ts",
     newDocument: "./src/Pages/NewDocument.ts",

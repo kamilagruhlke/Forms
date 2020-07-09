@@ -1,8 +1,9 @@
+import { DocumentValue } from '../Interfaces/DocumentValue';
 import { Storage } from "../Interfaces/Storage";
 
-export class DocumentsStorage implements Storage<{key: string, value: string}> {
+export class DocumentsStorage implements Storage<DocumentValue> {
 
-    public save(dataObject: {key: string, value: string}[]): string {
+    public save(dataObject: DocumentValue): string {
         let id = `document_${new Date().getTime()}`;
 
         localStorage.setItem(id, JSON.stringify(dataObject))
@@ -10,12 +11,12 @@ export class DocumentsStorage implements Storage<{key: string, value: string}> {
         return id;
     }   
     
-    public override(id: string, dataObject: {key: string, value: string}[]): string {
+    public override(id: string, dataObject: DocumentValue): string {
         localStorage.setItem(id, JSON.stringify(dataObject))
         return id;
-    }   
+    }
     
-    public load(idDocument: string) {
+    public load(idDocument: string) : DocumentValue {
         return JSON.parse(localStorage.getItem(idDocument));
     }
 

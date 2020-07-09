@@ -1,3 +1,4 @@
+import { FormValue } from './../Interfaces/FormValue';
 import { FormsStorage } from './../Storage/FormsStorage';
 import { TextAreaField } from './../Fields/TextAreaField';
 import { SelectField } from './../Fields/SelectField';
@@ -36,8 +37,6 @@ export class FormCreator {
                     this.fields.push(new SelectField(field.id, field.label, field.value, field.rest));
                 }
             }
-
-
         }
     }
 
@@ -132,8 +131,8 @@ export class FormCreator {
         }
     }
 
-    private getValue(): {id: string, label: string, type: FieldType, value: string, rest: string[]}[] {
-        let values : {id: string, label: string, type: FieldType, value: string, rest: string[]}[] = [];
+    private getValue(): FormValue[] {
+        let values : FormValue[] = [];
 
         for (let field in this.fields) {
             if(this.fields[field].fieldType === FieldType.SelectField) {

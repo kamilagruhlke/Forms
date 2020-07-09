@@ -1,9 +1,9 @@
-import { FieldType } from './../Enums/FieldType';
+import { FormValue } from './../Interfaces/FormValue';
 import { Storage } from "../Interfaces/Storage";
 
-export class FormsStorage implements Storage<{id: string, label: string, type: FieldType, value: string, rest: string[]}> {
+export class FormsStorage implements Storage<FormValue[]> {
 
-    save(dataObject: any): string {
+    save(dataObject: FormValue[]): string {
         let id = `form_${new Date().getTime()}`;
 
         localStorage.setItem(id, JSON.stringify(dataObject))
@@ -11,12 +11,12 @@ export class FormsStorage implements Storage<{id: string, label: string, type: F
         return id;
     }
     
-    override(id: string, dataObject: {id: string, label: string, type: FieldType, value: string, rest: string[]}[]): string {
+    override(id: string, dataObject: FormValue[]): string {
         localStorage.setItem(id, JSON.stringify(dataObject))
         return id;
     }
 
-    load(id: string): {id: string, label: string, type: FieldType, value: string, rest: string[]}[] {
+    load(id: string): FormValue[] {
         return JSON.parse(localStorage.getItem(id));
     }
 
