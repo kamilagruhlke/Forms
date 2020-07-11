@@ -81,7 +81,7 @@ export class Form {
 
             if (this.id !== null) {
                 localStorage.override(this.id, this.getValue());
-                window.location.href = '/document-list.html';
+                window.location.href = '/index.html';
             }
             else {
                 localStorage.save(this.getValue());
