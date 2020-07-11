@@ -32,7 +32,7 @@ export class TextAreaField implements Field {
         field.name = this.name;
         field.value = this.value;
         field.onchange = () => {
-            let currentValue = (document.getElementsByName(this.name)[0]) as HTMLTextAreaElement;
+            let currentValue = document.getElementById(this.name) as HTMLTextAreaElement;
             this.value = currentValue.value;
         }
         

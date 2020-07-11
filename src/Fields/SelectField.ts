@@ -34,7 +34,7 @@ export class SelectField implements Field {
         field.name = this.name;
         field.value = this.value;
         field.onchange = () => {
-            let currentValue = (document.getElementsByName(this.name)[0]) as HTMLSelectElement;
+            let currentValue = document.getElementById(this.name) as HTMLSelectElement;
             this.value = currentValue.value;
         }
 

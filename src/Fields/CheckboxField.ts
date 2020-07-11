@@ -29,7 +29,7 @@ export class CheckboxField implements Field {
         field.value = this.value;
         field.checked = this.value === 'true';
         field.onchange = () => {
-            let currentValue = (document.getElementsByName(this.name)[0]) as HTMLInputElement;
+            let currentValue = document.getElementById(this.name) as HTMLInputElement;
             this.value = currentValue.checked.toString();
         }
 
