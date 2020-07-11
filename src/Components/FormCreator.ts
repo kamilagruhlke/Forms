@@ -148,6 +148,8 @@ export class FormCreator {
         } else {
             formsStorage.save(this.getValue());
         }
+
+        location.href = '/form-list.html';
     }
 
     private getValue(): FormValue[] {
