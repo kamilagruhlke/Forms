@@ -17,24 +17,26 @@ export class InputField implements Field {
     }
 
     public render(elementId: string): void {
+        var formGroup = document.createElement('div');
+        formGroup.id = 'group-' + this.name;
+        formGroup.className = 'form-group';
+
+        document.getElementById(elementId).appendChild(formGroup);
+
         var label = new FieldLabel(this.name, this.label);
-        label.render(elementId);
+        label.render(formGroup.id);
 
         var field = document.createElement("input");
+        field.id = this.name;
+        field.className = "form-control";
         field.name = this.name;
         field.type = 'text';
         field.value = this.value;
-        field.className = "fieldInput";
         field.onchange = () => {
             let currentValue = (document.getElementsByName(this.name)[0]) as HTMLInputElement;
             this.value = currentValue.value;
         }
         
-        document.getElementById(elementId).appendChild(field)
-    
-        var br = document.createElement('br');
-        document.getElementById(elementId).appendChild(br)
-        br = document.createElement('br');
-        document.getElementById(elementId).appendChild(br)
+        formGroup.appendChild(field);
     }
 }

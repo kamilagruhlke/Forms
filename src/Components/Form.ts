@@ -8,7 +8,6 @@ import { TextAreaField } from '../Fields/TextAreaField';
 import { DocumentsStorage } from "../Storage/DocumentsStorage";
 import { FieldType } from '../enums/FieldType';
 import { FormsStorage } from '../Storage/FormsStorage';
-import { Router } from '../Router';
 import { DateField } from '../Fields/DateField';
 
 export class Form {
@@ -76,7 +75,7 @@ export class Form {
 
         var button = document.createElement('button');
         button.innerHTML = "Zapisz";
-        button.className = "button";
+        button.className = "btn btn-success";
         button.onclick = () => {
             const localStorage = new DocumentsStorage();
 
@@ -94,7 +93,7 @@ export class Form {
 
         button = document.createElement('button');
         button.innerHTML = "Wstecz";
-        button.className = "button";
+        button.className = "btn btn-dark";
         button.onclick = () => {
             window.location.href = '/index.html';
         }

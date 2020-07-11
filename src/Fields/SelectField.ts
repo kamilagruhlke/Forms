@@ -19,13 +19,20 @@ export class SelectField implements Field {
     }
 
     public render(elementId: string): void {
+        var formGroup = document.createElement('div');
+        formGroup.id = 'group-' + this.name;
+        formGroup.className = 'form-group';
+
+        document.getElementById(elementId).appendChild(formGroup);
+
         var label = new FieldLabel(this.name, this.label);
-        label.render(elementId);
+        label.render(formGroup.id);
 
         var field = document.createElement("select");
+        field.id = this.name;
+        field.className = "form-control";
         field.name = this.name;
         field.value = this.value;
-        field.className = "selectField";
         field.onchange = () => {
             let currentValue = (document.getElementsByName(this.name)[0]) as HTMLSelectElement;
             this.value = currentValue.value;
@@ -39,11 +46,6 @@ export class SelectField implements Field {
             field.appendChild(option);
         }
         
-        document.getElementById(elementId).appendChild(field)
-
-        var br = document.createElement('br');
-        document.getElementById(elementId).appendChild(br)
-        br = document.createElement('br');
-        document.getElementById(elementId).appendChild(br)
+        formGroup.appendChild(field);
     }
 }

@@ -9,6 +9,7 @@ import { InputField } from "../Fields/InputField";
 import { DateField } from '../Fields/DateField';
 import { FieldType } from '../enums/FieldType';
 import { Router } from '../Router';
+import { FieldLabel } from './FieldLabel';
 
 export class FormCreator {
 
@@ -41,19 +42,31 @@ export class FormCreator {
     }
 
     public newForm(): void {
+        var label = new FieldLabel('input-name', 'Identyfikator pola');
+        label.render('Form');
+
         var inputName = document.createElement("input");
+        inputName.className = "form-control";
         inputName.type = "text";
         inputName.id = "input-name";
 
         document.getElementById('Form').appendChild(inputName);
 
+        var label = new FieldLabel('input-label', 'Nazwa');
+        label.render('Form');
+
         var inputLabel = document.createElement("input");
+        inputLabel.className = "form-control";
         inputLabel.type = "text";
         inputLabel.id = "input-label";
 
         document.getElementById('Form').appendChild(inputLabel);
+
+        var label = new FieldLabel('selected-type', 'Typ');
+        label.render('Form');
         
         var selectType = document.createElement("select");
+        selectType.className = "form-control";
         selectType.id = "selected-type";
         
         for(let type of ["input", "email", "date", "checkbox", "select", "text-area"]) {
@@ -64,13 +77,18 @@ export class FormCreator {
 
         document.getElementById('Form').appendChild(selectType);
 
+        var label = new FieldLabel('input-default-value', 'Wartość domyślna');
+        label.render('Form');
+
         var inputDefaultValue = document.createElement("input");
+        inputDefaultValue.className = "form-control";
         inputDefaultValue.type = "text";
         inputDefaultValue.id = "input-default-value";
 
         document.getElementById('Form').appendChild(inputDefaultValue);
 
         var button = document.createElement("button");
+        button.className = "btn btn-warning btn-margin-top";
         button.innerHTML = "Dodaj";
         button.onclick = () => {
             let name = document.getElementById("input-name") as HTMLInputElement;
@@ -103,6 +121,7 @@ export class FormCreator {
         document.getElementById('Form').appendChild(container);
 
         var saveButton = document.createElement("button");
+        saveButton.className = "btn btn-success btn-margin-top";
         saveButton.innerHTML = "Zapisz";
         saveButton.onclick = () => {
             this.saveForm();

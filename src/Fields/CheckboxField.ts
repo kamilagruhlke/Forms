@@ -17,10 +17,13 @@ export class CheckboxField implements Field {
     }
 
     public render(elementId: string): void {
-        var label = new FieldLabel(this.name, this.label);
-        label.render(elementId);
+        var formCheck = document.createElement('div');
+        formCheck.id = 'group-' + this.name;
+        formCheck.className = 'form-check';
 
         var field = document.createElement("input");
+        field.id = this.name;
+        field.className = "form-check-input";
         field.name = this.name;
         field.type = 'checkbox';
         field.value = this.value;
@@ -28,12 +31,12 @@ export class CheckboxField implements Field {
             let currentValue = (document.getElementsByName(this.name)[0]) as HTMLInputElement;
             this.value = currentValue.checked.toString();
         }
-        
-        document.getElementById(elementId).appendChild(field)
 
-        var br = document.createElement('br');
-        document.getElementById(elementId).appendChild(br)
-        br = document.createElement('br');
-        document.getElementById(elementId).appendChild(br)
+        formCheck.appendChild(field);
+
+        document.getElementById(elementId).appendChild(formCheck);
+
+        var label = new FieldLabel(this.name, this.label, 'form-check-label');
+        label.render(formCheck.id);
     }
 }

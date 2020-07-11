@@ -1,14 +1,14 @@
 body {
-  background: rgb(243, 243, 243);
+  background: #f3f3f3;
 }
 
 #Form {
-  background-color: #fff; 
+  background-color: #fff;
   margin: 0 auto;
   margin-top: 1em;
   width: 40%;
   padding: 1em;
-  border:3px solid #563d7c;
+  border: 3px solid #563d7c;
 }
 
 .btn {
