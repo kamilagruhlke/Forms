@@ -34,12 +34,7 @@ export class DocumentList {
             link.href = `/edit-document.html?id=${documentList[index]}`;
             link.innerHTML = 'Edytuj';
 
-            var button = document.createElement('button');
-            button.className = "btn btn-danger";
-            button.innerHTML = "Usuń";
-            button.onclick = () =>  {
-                this.removeDocument(documentList[index]); 
-            }
+            const button = this.createRemoveButton(documentList[index]);
 
             td = document.createElement('td');
             td.appendChild(link);
@@ -53,8 +48,15 @@ export class DocumentList {
         document.getElementById('Form').appendChild(table);
     }
 
-    public removeDocument(id: string): void {
-        new DocumentsStorage().remove(id);
-        location.reload();
+    private createRemoveButton(id: string) : HTMLButtonElement {
+        var button = document.createElement('button');
+        button.className = "btn btn-danger";
+        button.innerHTML = "Usuń";
+        button.onclick = () => {
+            new DocumentsStorage().remove(id);
+            location.reload();
+        }
+
+        return button;
     }
 }

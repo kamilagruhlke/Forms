@@ -44,12 +44,7 @@ export class FormList {
 
             td.appendChild(link);
 
-            var button = document.createElement('button');
-            button.className = "btn btn-danger";
-            button.innerHTML = "Usuń";
-            button.onclick = () =>  {
-                this.removeForm(formList[index]); 
-            }
+            const button = this.createRemoveButton(formList[index]);
 
             td.appendChild(button);
             tr.appendChild(td);
@@ -60,8 +55,15 @@ export class FormList {
         document.getElementById('Form').appendChild(table);
     }
 
-    public removeForm(id: string): void {
-        new FormsStorage().remove(id);
-        location.reload();
+    private createRemoveButton(id: string) : HTMLButtonElement {
+        var button = document.createElement('button');
+        button.className = "btn btn-danger";
+        button.innerHTML = "Usuń";
+        button.onclick = () => {
+            new FormsStorage().remove(id);
+            location.reload();
+        }
+
+        return button;
     }
 }
